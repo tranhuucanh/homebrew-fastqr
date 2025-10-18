@@ -18,11 +18,17 @@ class Fastqr < Formula
     # Extract the right platform directory
     platform = Hardware::CPU.arm? ? "macos-arm64" : "macos-x86_64"
     
-    # Install pre-built binary
+    # Install library first
+    lib.install "#{platform}/lib/libfastqr.dylib"
+    # Create version symlink
+    ln_s lib/"libfastqr.dylib", lib/"libfastqr.1.dylib"
+    
+    # Install binary
     bin.install "#{platform}/bin/fastqr"
     
-    # Install library
-    lib.install "#{platform}/lib/libfastqr.dylib" if File.exist?("#{platform}/lib/libfastqr.dylib")
+    # Fix rpath to use installed library
+    system "install_name_tool", "-change", "@rpath/libfastqr.1.dylib", 
+           "#{lib}/libfastqr.1.dylib", bin/"fastqr"
     
     # Install headers
     include.install "#{platform}/include/fastqr.h" if File.exist?("#{platform}/include/fastqr.h")
