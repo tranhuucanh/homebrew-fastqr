@@ -14,22 +14,26 @@ class Fastqr < Formula
     sha256 "cf799762eba8980358348ca45405ef10b7eed3fab9d7eca7d45dbd0330e2d718"
   end
 
+  depends_on "vips"
+  depends_on "glib"
+  depends_on "gettext"
+
   def install
     # Extract the right platform directory
     platform = Hardware::CPU.arm? ? "macos-arm64" : "macos-x86_64"
-    
+
     # Install library first
     lib.install "#{platform}/lib/libfastqr.dylib"
     # Create version symlink
     ln_s lib/"libfastqr.dylib", lib/"libfastqr.1.dylib"
-    
+
     # Install binary
     bin.install "#{platform}/bin/fastqr"
-    
+
     # Fix rpath to use installed library
-    system "install_name_tool", "-change", "@rpath/libfastqr.1.dylib", 
+    system "install_name_tool", "-change", "@rpath/libfastqr.1.dylib",
            "#{lib}/libfastqr.1.dylib", bin/"fastqr"
-    
+
     # Install headers
     include.install "#{platform}/include/fastqr.h" if File.exist?("#{platform}/include/fastqr.h")
   end
