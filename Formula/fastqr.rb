@@ -1,24 +1,28 @@
 class Fastqr < Formula
   desc "Lightning-fast QR code generator with advanced features"
   homepage "https://github.com/tranhuucanh/fastqr"
-  url "https://github.com/tranhuucanh/fastqr/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "7a3ad4b61e8ea66f147568056a2490f4cf6e6dc167e542658c850656ccb8183c"
-  license "LGPL-2.1"
   version "1.0.0"
+  license "LGPL-2.1"
 
-  depends_on "cmake" => :build
-  depends_on "pkg-config" => :build
-  depends_on "qrencode"
-  depends_on "vips"
+  on_arm do
+    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.0/fastqr-1.0.0-macos-arm64.tar.gz"
+    sha256 "fa83d4a70a3a4c449598ec94171e61b9430d409407084a61810dea90328fef5b"
+  end
+
+  on_intel do
+    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.0/fastqr-1.0.0-macos-x86_64.tar.gz"
+    sha256 "cf799762eba8980358348ca45405ef10b7eed3fab9d7eca7d45dbd0330e2d718"
+  end
 
   def install
-    # Build the library and CLI
-    system "cmake", "-S", ".", "-B", "build",
-                    "-DCMAKE_BUILD_TYPE=Release",
-                    "-DCMAKE_INSTALL_PREFIX=#{prefix}",
-                    *std_cmake_args
-    system "cmake", "--build", "build"
-    system "cmake", "--install", "build"
+    # Install pre-built binary
+    bin.install "fastqr"
+
+    # Install library if exists
+    lib.install Dir["lib/*"] if Dir.exist?("lib")
+
+    # Install headers if exists
+    include.install Dir["include/*"] if Dir.exist?("include")
   end
 
   test do
