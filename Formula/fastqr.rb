@@ -15,14 +15,17 @@ class Fastqr < Formula
   end
 
   def install
+    # Extract the right platform directory
+    platform = Hardware::CPU.arm? ? "macos-arm64" : "macos-x86_64"
+    
     # Install pre-built binary
-    bin.install "fastqr"
-
-    # Install library if exists
-    lib.install Dir["lib/*"] if Dir.exist?("lib")
-
-    # Install headers if exists
-    include.install Dir["include/*"] if Dir.exist?("include")
+    bin.install "#{platform}/bin/fastqr"
+    
+    # Install library
+    lib.install "#{platform}/lib/libfastqr.dylib" if File.exist?("#{platform}/lib/libfastqr.dylib")
+    
+    # Install headers
+    include.install "#{platform}/include/fastqr.h" if File.exist?("#{platform}/include/fastqr.h")
   end
 
   test do
