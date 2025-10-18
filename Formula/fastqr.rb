@@ -5,12 +5,12 @@ class Fastqr < Formula
   license "LGPL-2.1"
 
   on_arm do
-    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.2/fastqr-1.0.4-macos-arm64.tar.gz"
+    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.4/fastqr-1.0.4-macos-arm64.tar.gz"
     sha256 "790c071f3bcfeee4c5baeb1a9d451763148a8f93f7e67fb877348624c5eca29f"
   end
 
   on_intel do
-    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.2/fastqr-1.0.4-macos-x86_64.tar.gz"
+    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.4/fastqr-1.0.4-macos-x86_64.tar.gz"
     sha256 "12a9969e225e22018e17bed67de588764b2d098929437200de8f099cf42fb1f5"
   end
 
