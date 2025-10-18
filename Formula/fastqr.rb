@@ -41,7 +41,7 @@ class Fastqr < Formula
   test do
     # Test CLI
     system "#{bin}/fastqr", "--version"
-    system "#{bin}/fastqr", "-d", "Hello Homebrew", "-o", "test.png"
+    system "#{bin}/fastqr", "Hello Homebrew", "test.png"
     assert_predicate testpath/"test.png", :exist?
   end
 end
