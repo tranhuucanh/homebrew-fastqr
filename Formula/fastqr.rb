@@ -1,17 +1,17 @@
 class Fastqr < Formula
   desc "Lightning-fast QR code generator with advanced features"
   homepage "https://github.com/tranhuucanh/fastqr"
-  version "1.0.1"
+  version "1.0.2"
   license "LGPL-2.1"
 
   on_arm do
-    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.1/fastqr-1.0.1-macos-arm64.tar.gz"
-    sha256 "1b7d408066d5e0e2f231b90c61d1581f89c2ab6cddf5b9b76a23b96c478a34b0"
+    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.2/fastqr-1.0.2-macos-arm64.tar.gz"
+    sha256 "d686665ee4d054003fb1cfe2f84bfe2e473d2cffe21c3ca58118b066616ec1d3"
   end
 
   on_intel do
-    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.1/fastqr-1.0.1-macos-x86_64.tar.gz"
-    sha256 "8d18b3617fbc52aa19a8cca196d9fe7bee2ed58a60ce6ebace0d24c7fa0aaf47"
+    url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.2/fastqr-1.0.2-macos-x86_64.tar.gz"
+    sha256 "7f9f4eb9cb31c622788aadff30b5c5b089c2c810ab0b59f07ad56b1219091d10"
   end
 
   depends_on "vips"
