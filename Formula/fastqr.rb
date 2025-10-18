@@ -19,23 +19,26 @@ class Fastqr < Formula
   depends_on "gettext"
 
   def install
-    # Extract the right platform directory
+    # Determine platform directory name
     platform = Hardware::CPU.arm? ? "macos-arm64" : "macos-x86_64"
-
-    # Install library first
-    lib.install "#{platform}/lib/libfastqr.dylib"
-    # Create version symlink
-    ln_s lib/"libfastqr.dylib", lib/"libfastqr.1.dylib"
-
-    # Install binary
-    bin.install "#{platform}/bin/fastqr"
-
-    # Fix rpath to use installed library
+    
+    # Change to platform directory (tarball extracts to platform-named folder)
+    cd platform do
+      # Install library first
+      lib.install "lib/libfastqr.dylib"
+      # Create version symlink
+      ln_s lib/"libfastqr.dylib", lib/"libfastqr.1.dylib"
+      
+      # Install binary
+      bin.install "bin/fastqr"
+      
+      # Install headers
+      include.install "include/fastqr.h" if File.exist?("include/fastqr.h")
+    end
+    
+    # Fix rpath to use installed library (after files are installed)
     system "install_name_tool", "-change", "@rpath/libfastqr.1.dylib",
            "#{lib}/libfastqr.1.dylib", bin/"fastqr"
-
-    # Install headers
-    include.install "#{platform}/include/fastqr.h" if File.exist?("#{platform}/include/fastqr.h")
   end
 
   test do
