@@ -14,6 +14,7 @@ class Fastqr < Formula
     system "cmake", "-S", ".", "-B", "build",
            "-DCMAKE_BUILD_TYPE=Release",
            "-DCMAKE_INSTALL_PREFIX=#{prefix}",
+           "-DFASTQR_BUILD_EXAMPLES=OFF",
            *std_cmake_args
     system "cmake", "--build", "build", "-j#{ENV.make_jobs}"
     system "cmake", "--install", "build"
