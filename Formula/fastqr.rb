@@ -6,12 +6,12 @@ class Fastqr < Formula
 
   on_arm do
     url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.0/fastqr-1.0.0-macos-arm64.tar.gz"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    sha256 "4930fbee1fd75f17ed03f989e47115a4ffde2a7c5d07764272eee231a68bd7ad"
   end
 
   on_intel do
     url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.0/fastqr-1.0.0-macos-x86_64.tar.gz"
-    sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+    sha256 "988903004a99a9e2c989bfe27c62b1e969d7a8a9e0b4e9209e193822af427978"
   end
 
   depends_on "vips"
