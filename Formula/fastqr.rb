@@ -2,7 +2,7 @@ class Fastqr < Formula
   desc "Lightning-fast QR code generator with advanced features"
   homepage "https://github.com/tranhuucanh/fastqr"
   url "https://github.com/tranhuucanh/fastqr/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "ff8e90a9569705e3300e940146eab3d338a28ac1611450ac15ed48378c8a50ca"
+  sha256 "3ae89d50c1e51465d4551661a34a744c38dc3c86ba2bf69f55526905dfa59e80"
   license "LGPL-2.1"
   version "1.0.0"
 
