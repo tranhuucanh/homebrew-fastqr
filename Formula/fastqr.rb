@@ -1,10 +1,10 @@
 class Fastqr < Formula
   desc "Lightning-fast QR code generator with advanced features"
   homepage "https://github.com/tranhuucanh/fastqr"
-  url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.5/fastqr-1.0.5.tar.gz"
-  sha256 "a82ed7855e23986a566dbe4b525ac7b013dd60e7c9a5a828d488aee5fd671343"
+  url "https://github.com/tranhuucanh/fastqr/releases/download/v1.0.6/fastqr-1.0.6.tar.gz"
+  sha256 "027c39eea616f58096099e43d2c47f4fd776f0a87c423ef27f305d6574ac1d41"
   license "LGPL-2.1"
-  version "1.0.5"
+  version "1.0.6"
 
   depends_on "cmake" => :build
   depends_on "qrencode"
